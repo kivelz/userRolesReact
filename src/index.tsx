@@ -3,13 +3,18 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import ToDoList from './app/view/todolist';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <div style={{ backgroundColor: '#F1EAE0', flex: 1 }}>
+      <App />
+
+    </div>
+
   </React.StrictMode>
 );
 
