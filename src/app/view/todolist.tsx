@@ -2,7 +2,7 @@ import { Divider, TextField } from '@mui/material';
 import React, { FC } from 'react';
 
 
-function ToDoList() {
+function ToDoLists() {
     return (
         <div style={{ backgroundColor: '#FFF' }}>
             <Divider className="divider" sx={{ borderColor: "#CED0D3" }}></Divider>
@@ -27,4 +27,4 @@ function ToDoList() {
     )
 }
 
-export default ToDoList;
+export default ToDoLists;
