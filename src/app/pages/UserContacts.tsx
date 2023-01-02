@@ -5,7 +5,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Box, Divider, Drawer, Typography } from '@mui/material';
 import TextField from '@mui/material/TextField';
 
+
 import { useState } from "react";
+import AddUsefulContact from './AddUserContact';
 
 interface IUserContactProps { }
 
@@ -102,7 +104,7 @@ const UsefulContacts: React.FunctionComponent<IUserContactProps> = (props) => {
                     </div>
                     <TextField id="outlined-basic" variant="outlined" fullWidth size='small' style={{}} />
                 </div>
-
+                <AddUsefulContact />
             </form>
         </div>
 
