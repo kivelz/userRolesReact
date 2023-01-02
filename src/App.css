@@ -1,10 +1,16 @@
+
 @font-face {
   font-family: 'Roboto-regular';
   src: local('MyFont'), url(./fonts/Roboto-Regular-webfont.woff) format('woff');
   /* other formats include: 'woff2', 'truetype, 'opentype',
                             'embedded-opentype', and 'svg' */
 }
-
+html, body
+{
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
 .divider {
  padding-top: 36px;
  margin-bottom: 36px !important;
@@ -66,6 +72,21 @@
 }
 .test {
   background-color: red;
+}
+.navBarTitle {
+  margin: 0px 20px;
+  font-size: 1rem;
+    font-family: "Roboto-regular";
+    line-height: 1.57;
+    font-weight: 500;
+    opacity: 0.4;
+}
+.navBarCategoryTitle {
+  margin: 0px;
+    font-weight: 400;
+    font-family: "DM Sans", sans-serif;
+    font-size: 0.1rem;
+    line-height: 1.5;
 }
 @keyframes App-logo-spin {
   from {

@@ -20,7 +20,9 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import { Link, Outlet } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import { SubjectOutlined } from '@mui/icons-material';
+import { ExpandLess, ExpandMore, StarBorder, SubjectOutlined } from '@mui/icons-material';
+import '../../../App.css'
+import { Collapse } from '@mui/material';
 
 interface LayoutComponentProps {
 
@@ -79,11 +81,12 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 const LayoutComponent: React.FunctionComponent<LayoutComponentProps> = () => {
     const theme = useTheme();
     const [open, setOpen] = React.useState(true);
+    const [expandCategory, setExpandCategory] = React.useState(false)
 
     const handleDrawerOpen = () => {
         setOpen(true);
     };
-
+    const navigate = useNavigate()
     const handleDrawerClose = () => {
         setOpen(false);
     };
@@ -101,7 +104,7 @@ const LayoutComponent: React.FunctionComponent<LayoutComponentProps> = () => {
         {
             text: 'Useful Contacts',
             icon: <SubjectOutlined color="secondary" />,
-            path: '/usefulcontact'
+            path: '/usercontact'
         },
         {
             text: 'Emergency Contact',
@@ -109,10 +112,11 @@ const LayoutComponent: React.FunctionComponent<LayoutComponentProps> = () => {
             path: '/emergencycontact'
         }
     ]
-
+    let handleOnClick = () => {
+        setExpandCategory(!expandCategory)
+    }
     return (
-        <Box sx={{}} >
-            <CssBaseline />
+        <Box sx={{ display: 'flex' }}>
             <AppBar position="fixed" open={open}>
                 <Toolbar>
                     <IconButton
@@ -124,9 +128,9 @@ const LayoutComponent: React.FunctionComponent<LayoutComponentProps> = () => {
                     >
                         <MenuIcon />
                     </IconButton>
-
                 </Toolbar>
             </AppBar>
+
             <Drawer
                 sx={{
                     width: drawerWidth,
@@ -139,6 +143,7 @@ const LayoutComponent: React.FunctionComponent<LayoutComponentProps> = () => {
                 variant="persistent"
                 anchor="left"
                 open={open}
+
             >
                 <DrawerHeader>
                     <IconButton onClick={handleDrawerClose}>
@@ -146,19 +151,24 @@ const LayoutComponent: React.FunctionComponent<LayoutComponentProps> = () => {
                     </IconButton>
                 </DrawerHeader>
                 <Divider />
-                DASHBOARD
-                <List>
-                    {menuItem.map((item, index) => (
+                <ListItem onClick={() => handleOnClick()}>
+                    <ListItemText inset primary="Dashboard" />
+                    {expandCategory ? <ExpandLess /> : <ExpandMore />}
+                </ListItem>
+                <Collapse in={expandCategory} timeout="auto" unmountOnExit>
+                    <List component="div" disablePadding>
+                        {menuItem.map((item, index) => (
 
-                        <ListItem key={item.text} disablePadding >
-                            <ListItemButton>
-                                <ListItemIcon>
-                                </ListItemIcon>
-                                <ListItemText primary={item.text}></ListItemText>
-                            </ListItemButton>
-                        </ListItem>
-                    ))}
-                </List>
+                            <ListItem key={item.text} disablePadding onClick={() => navigate(item.path)} >
+                                <ListItemButton>
+                                    <ListItemIcon>
+                                    </ListItemIcon>
+                                    <ListItemText primary={item.text}></ListItemText>
+                                </ListItemButton>
+                            </ListItem>
+                        ))}
+                    </List>
+                </Collapse>
                 <Divider />
                 <List>
                     {['All mail', 'Trash', 'Spam'].map((text, index) => (
@@ -177,10 +187,7 @@ const LayoutComponent: React.FunctionComponent<LayoutComponentProps> = () => {
             <Main open={open} style={{ backgroundColor: '#F1EAE0' }}>
                 <DrawerHeader />
                 <Outlet />
-
-
             </Main>
-
         </Box>
     );
 }

@@ -12,7 +12,7 @@ interface IUserContactProps { }
 const UsefulContacts: React.FunctionComponent<IUserContactProps> = (props) => {
     return (
 
-        <div className="container" style={{ paddingRight: 24, paddingLeft: 24, backgroundColor: '#FFF', padding: 24 }}>
+        <div className="container" style={{ backgroundColor: '#FFF', padding: 24 }}>
             <div style={{ flex: 1 }}>
                 <h2>Useful contacts</h2>
                 <span>For tenants to contact the relevant personnels when the situation requires.</span>
@@ -94,6 +94,13 @@ const UsefulContacts: React.FunctionComponent<IUserContactProps> = (props) => {
                         </div>
                         <TextField id="outlined-basic" variant="outlined" fullWidth size='small' style={{}} />
                     </div>
+                </div>
+
+                <div style={{ flex: 1 }}>
+                    <div className='textBoxTitleSpace'>
+                        <span className='textBoxLabel' style={{ color: '#6A717B' }}>Email (if applicable)</span>
+                    </div>
+                    <TextField id="outlined-basic" variant="outlined" fullWidth size='small' style={{}} />
                 </div>
 
             </form>
