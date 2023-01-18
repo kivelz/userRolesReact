@@ -23,9 +23,6 @@ import { getAllCodes } from "../../../domain/usecases/general/code";
 
 
 const ExTable = () => {
-  const [getResult, setGetResult] = useState(null);
-  const queryClient = useQueryClient();
-
   const {isLoading, isError, error, data}  = useQuery('query-tutorials', getAllCodes)
   
   console.log(data)
