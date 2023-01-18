@@ -1,10 +1,4 @@
 
-@font-face {
-  font-family: 'Roboto-regular';
-  src: local('MyFont'), url(./fonts/Roboto-Regular-webfont.woff) format('woff');
-  /* other formats include: 'woff2', 'truetype, 'opentype',
-                            'embedded-opentype', and 'svg' */
-}
 html, body
 {
     height: 100%;
