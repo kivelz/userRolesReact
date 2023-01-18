@@ -1,6 +1,7 @@
 export default interface Code {
-    id?: any | null,
-    title: string,
-    description: string,
-    published?: boolean,
+    CodeId: number,
+    CodeType: string,
+    Code: string,
+    Name: string,
+    Description: string,
   }
