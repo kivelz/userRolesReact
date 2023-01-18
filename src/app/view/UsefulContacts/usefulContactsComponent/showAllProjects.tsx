@@ -20,14 +20,70 @@ import { getAllCodes } from "../../../domain/usecases/general/code";
 
 
 
-
+const products = [
+  {
+    id: "1",
+    name: "Sunil Joshi",
+    post: "Web Designer",
+    pname: "Elite Admin",
+    priority: "Low",
+    pbg: "primary.main",
+    budget: "3.9",
+  },
+  {
+    id: "2",
+    name: "Andrew McDownland",
+    post: "Project Manager",
+    pname: "Real Homes WP Theme",
+    priority: "Medium",
+    pbg: "secondary.main",
+    budget: "24.5",
+  },
+  {
+    id: "3",
+    name: "Christopher Jamil",
+    post: "Project Manager",
+    pname: "MedicalPro WP Theme",
+    priority: "High",
+    pbg: "error.main",
+    budget: "12.8",
+  },
+  {
+    id: "4",
+    name: "Nirav Joshi",
+    post: "Frontend Engineer",
+    pname: "Hosting Press HTML",
+    priority: "Critical",
+    pbg: "success.main",
+    budget: "2.4",
+  },
+];
 
 const ExTable = () => {
-  const {isLoading, isError, error, data}  = useQuery('query-tutorials', getAllCodes)
-  
-  console.log(data)
+  const [getResult, setGetResult] = useState<[] | Code[]>([]);
+  const { isLoading: isLoadingTutorials, refetch: getAllCodes } = useQuery<Code[], Error>(
+    "query-Ccode",
+    async () => {
+      return await CodeService.findAll();
+    },
+    {
+      enabled: false,
+      onSuccess: (res) => {
+        setGetResult(res);
+      },
+      onError: (err: any) => {
+        setGetResult((err.response?.data || err));
+      },
+    }
+  );
+
+  useEffect(() => {
+    getAllCodes();
+    console.log(getResult)
+  }, [getAllCodes]);
 
   return (
+
     <Table
       aria-label="simple table"
       sx={{
@@ -44,7 +100,7 @@ const ExTable = () => {
           </TableCell>
           <TableCell>
             <Typography color="textSecondary" variant="h6">
-             Type
+              Type
             </Typography>
           </TableCell>
           <TableCell>
@@ -65,8 +121,8 @@ const ExTable = () => {
         </TableRow>
       </TableHead>
       <TableBody>
-        {data.map((product: any) => (
-          <TableRow key={product.name}>
+        { getResult.map((data: any) => (
+          <TableRow key={data.CodeId}>
             <TableCell>
               <Typography
                 sx={{
@@ -74,7 +130,7 @@ const ExTable = () => {
                   fontWeight: "500",
                 }}
               >
-                {product.CodeId}
+                {data.CodeId}
               </Typography>
             </TableCell>
             <TableCell>
@@ -91,30 +147,23 @@ const ExTable = () => {
                       fontWeight: "600",
                     }}
                   >
-                    {product.name}
+                    {data.CodeType}
                   </Typography>
-                  <Typography
-                    color="textSecondary"
-                    sx={{
-                      fontSize: "13px",
-                    }}
-                  >
-                    {product.CodeType}
-                  </Typography>
+                
                 </Box>
               </Box>
             </TableCell>
             <TableCell>
               <Typography color="textSecondary" variant="h6">
-                {product.Code}
+                {data.Code}
               </Typography>
             </TableCell>
             <TableCell>
-            <Typography variant="h6">{product.Name}</Typography>
-             
+            
+              <Typography variant="h6">{data.Name}</Typography>
             </TableCell>
             <TableCell align="right">
-              <Typography variant="h6">{product.Description}</Typography>
+              <Typography variant="h6">{data.Description}</Typography>
             </TableCell>
           </TableRow>
         ))}
