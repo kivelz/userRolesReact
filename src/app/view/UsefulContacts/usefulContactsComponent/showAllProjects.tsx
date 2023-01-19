@@ -17,6 +17,7 @@ import { config } from "../../../../config";
 import Code from "../../../types/code";
 import CodeService from "../../../services/codeServices";
 import { getAllCodes } from "../../../domain/usecases/general/code";
+import { codeApi, useGetAllCodesQuery } from "../../../features/ codes/codeSlice";
 
 
 
@@ -61,26 +62,9 @@ const products = [
 
 const ExTable = () => {
   const [getResult, setGetResult] = useState<[] | Code[]>([]);
-  const { isLoading: isLoadingTutorials, refetch: getAllCodes } = useQuery<Code[], Error>(
-    "query-Ccode",
-    async () => {
-      return await CodeService.findAll();
-    },
-    {
-      enabled: false,
-      onSuccess: (res) => {
-        setGetResult(res);
-      },
-      onError: (err: any) => {
-        setGetResult((err.response?.data || err));
-      },
-    }
-  );
-
-  useEffect(() => {
-    getAllCodes();
-    console.log(getResult)
-  }, [getAllCodes]);
+  const {data} = useGetAllCodesQuery('codeApi')
+  console.log('data', data)
+ 
 
   return (
 

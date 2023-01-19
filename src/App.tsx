@@ -4,7 +4,8 @@ import { ThemeProvider } from "@material-ui/core";
 import {baseTheme} from '../src/app/assets/global/Theme-variable'
 import Themeroutes from "./routes/Router";
 import { Provider } from 'react-redux';
-import { store } from "./app/redux/store";
+import { store } from "./store";
+
 
 
 
@@ -13,10 +14,11 @@ const App = () => {
   const theme = baseTheme;
   
   return (
-    
+    <Provider store={store}>
     <ThemeProvider theme={theme}>
       {routing}
     </ThemeProvider>
+    </Provider>
    
   );
 };
