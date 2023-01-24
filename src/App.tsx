@@ -4,10 +4,7 @@ import { ThemeProvider } from "@material-ui/core";
 import {baseTheme} from '../src/app/assets/global/Theme-variable'
 import Themeroutes from "./routes/Router";
 import { Provider } from 'react-redux';
-import { store } from "./store";
-
-
-
+import { store } from "./app/redux/store";
 
 const App = () => {
   const routing = useRoutes(Themeroutes);
@@ -22,5 +19,4 @@ const App = () => {
    
   );
 };
-
 export default App;

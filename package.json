@@ -11,7 +11,9 @@
     "@material-ui/icons": "5.0.0-alpha.37",
     "@material-ui/lab": "5.0.0-alpha.38",
     "@material-ui/system": "5.0.0-alpha.34",
+    "@mui/icons-material": "^5.11.0",
     "@mui/material": "^5.11.4",
+    "@mui/x-data-grid": "^5.17.20",
     "@reduxjs/toolkit": "^1.9.1",
     "@testing-library/jest-dom": "^5.11.10",
     "@testing-library/react": "^11.2.6",
@@ -24,10 +26,13 @@
     "axios": "^1.2.2",
     "base-64": "^1.0.0",
     "bootstrap": "^5.2.3",
+    "feather-icons-react": "^0.6.2",
+    "formik": "^2.2.9",
     "hamburger-react": "^2.5.0",
     "react": "^17.0.2",
     "react-bootstrap": "^2.7.0",
     "react-dom": "^17.0.2",
+    "react-helmet": "^6.1.0",
     "react-query": "^3.39.2",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.6.1",
@@ -67,6 +72,7 @@
   },
   "devDependencies": {
     "@redux-devtools/core": "^3.13.1",
-    "@types/base-64": "^1.0.0"
+    "@types/base-64": "^1.0.0",
+    "@types/react-helmet": "^6.1.6"
   }
 }

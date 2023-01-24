@@ -1,7 +1,7 @@
 import { lazy } from "react";
 import { Navigate } from "react-router-dom";
 import Dashboard from "../app/view/Dashboard/Dashboard";
-import UsefulContactsProject from "../app/view/UsefulContacts/usefulContactsComponent/showAllProjects";
+import UsefulContactsProject from "../app/view/Code/CodeList";
 
 /****Layouts*****/
 const FullLayout = lazy(() => import("../app/view/Layout/FullLayout"));

@@ -1,25 +1,28 @@
 import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-import { HashRouter } from "react-router-dom";
-import "./global.css";
-import {ReactQueryDevtools} from 'react-query/devtools'
+import { BrowserRouter, HashRouter } from "react-router-dom";
+
+
 import {QueryClient, QueryClientProvider} from 'react-query'
-
+import Spinner from "./app/view/spinner/Spinner";
+import { Provider } from "react-redux";
 //import reportWebVitals from './reportWebVitals';
-import Spinner from "./app/view/Spinner/Spinner";
 
+import { store } from "./app/redux/store";
 const queryClient = new QueryClient();
 
 ReactDOM.render(
-  <Suspense fallback={<Spinner />}>
-    <HashRouter>
-      <QueryClientProvider client={queryClient}>
+  <Provider store={store}>
+    <QueryClientProvider client={queryClient}>
+    <Suspense fallback={<Spinner />}>
+    <BrowserRouter>
       <App />
-      <ReactQueryDevtools initialIsOpen={false} />
-  </QueryClientProvider>
-    </HashRouter>
-  </Suspense>,
+    </BrowserRouter>
+  </Suspense>
+    </QueryClientProvider>
+  
+</Provider>,
   document.getElementById("root")
 );
 
