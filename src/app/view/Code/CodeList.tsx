@@ -45,7 +45,6 @@ const CodeMaster = () => {
     content: "",
   });
 
-
   const columns: GridColDef[] = [
     {
       field: "CodeType",
