@@ -37,13 +37,9 @@ const CodeMaster = () => {
   // const lgMedia = useMediaQuery((theme: any) => theme.breakpoints.up("lg"));
 
   // const codeMasterStyles = CodeMasterStyles(lgMedia);
-  const [CodeType, setCodeType] = useState("");
-  const [Code , setCode] = useState("");
-  const [Name, setName] = useState("");
   const navigate = useNavigate();
   const {data, isFetching, isError, isSuccess} = useGetAllCodesQuery('CodeApi');
   const [codeMasters, setCodeMasters] = useState([]);
-
   const [loadingModal, setLoadingModal] = useState({
     open: false,
     content: "",
